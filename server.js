@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var middleware = require('./middleware.js');
-
+var PORT= process.env.PORT || 4000;
 app.use(middleware().logger);
 
 app.get('/about',middleware().requireAuthentication, function (req, res) {
@@ -9,6 +9,6 @@ app.get('/about',middleware().requireAuthentication, function (req, res) {
 });
 app.use(express.static(__dirname + '/public'));
 
-app.listen(4000, function () {
+app.listen(PORT, function () {
   console.log('Example app listening on port 3000!');
 });
